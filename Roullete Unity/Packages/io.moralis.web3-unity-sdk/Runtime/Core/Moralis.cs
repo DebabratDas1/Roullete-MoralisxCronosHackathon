@@ -660,6 +660,8 @@ namespace MoralisUnity
             HexBigInteger gas,
             HexBigInteger gasPrice)
         {
+            Debug.Log(abi.Length);
+
             string result = null;
             string gasValue = gas.Value.ToString();
             string gasPriceValue = gasPrice.ToString();
@@ -669,16 +671,25 @@ namespace MoralisUnity
 
             try
             {
+                Debug.Log(contractAddress.Length);
 #if UNITY_WEBGL
+Debug.Log("webgl");
                 string functionArgs = JsonConvert.SerializeObject(args);
                 result = await Web3GL.SendContract(functionName, abi, contractAddress, functionArgs, value.Value.ToString(), gasValue, gasPriceValue);
 #else
+                Debug.Log("Not webgl");
+
                 // Retrieve from address, the address used to authenticate the user.
                 MoralisUser user = await Moralis.GetUserAsync();
+                Debug.Log(user);
                 string fromAddress = user.authData["moralisEth"]["id"].ToString();
-
+                Debug.Log("fromAddress" + fromAddress);
+                
                 Contract contractInstance = Web3Client.Eth.GetContract(abi, contractAddress);
+                Debug.Log(contractInstance.Address);
+                Debug.Log(functionName);
                 Function function = contractInstance.GetFunction(functionName);
+                Debug.Log(function);
 
                 if (function != null)
                 {

@@ -24,9 +24,9 @@ public class ContractTest : MonoBehaviour
         //fromAddress
         //999999999999999999
         };
-        HexBigInteger value = new HexBigInteger(100);
-        HexBigInteger gas = new HexBigInteger(0);
-        HexBigInteger gasPrice = new HexBigInteger(0);
+        HexBigInteger value = new HexBigInteger(9999999999);
+        HexBigInteger gas = new HexBigInteger(5000);
+        HexBigInteger gasPrice = new HexBigInteger(5000);
 
         string resp = await Moralis.ExecuteContractFunction(contractAddress, contractABI,
             "buyTokens", parameters,
@@ -52,6 +52,10 @@ public class ContractTest : MonoBehaviour
         string fromAddress = user.authData["moralisEth"]["id"].ToString();
         var balance = await Moralis.Web3Api.Account.GetTokenBalances(fromAddress.ToLower(), ChainList.cronos_testnet);
         Debug.Log($"GetNativeBalance Balance: {balance.Count}");
+        foreach(var s in balance)
+        {
+            Debug.Log(s + "    s");
+        }
     }
 
     /*public async void CallContractNethereum()
