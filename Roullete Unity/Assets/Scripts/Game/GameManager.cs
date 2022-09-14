@@ -4,15 +4,82 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance;
+    private void Awake()
     {
-        
+        if(Instance!=this && Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private int userChips = 1234;
+    public int AvailableChips
     {
-        
+        get
+        {
+            return userChips;
+        }
+        set
+        {
+
+        }
     }
+
+
+    private int rewardAmt = 0;
+    public int RewardAmount
+    {
+        get
+        {
+            return rewardAmt;
+        }
+        set
+        {
+            rewardAmt = value;
+        }
+    }
+
+
+    private int diceOutcome = 0;
+    public int DiceOutcome
+    {
+        get
+        {
+            return diceOutcome;
+        }
+        set
+        {
+            diceOutcome = value;
+        }
+    }
+
+
+    private int betAmt;
+    public int BetAmt
+    {
+        get
+        {
+            return betAmt;
+        }
+        set
+        {
+            betAmt = value;
+        }
+    }
+
+    private int netWin;
+    public int NetWin
+    {
+        get
+        {
+            return (rewardAmt - betAmt);
+        }
+    }
+ 
+
 }

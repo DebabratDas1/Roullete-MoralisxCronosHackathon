@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fef308ab711a6439bb086b5265f83e, type: 3}
   m_Name: MoralisServerSettings
   m_EditorClassIdentifier: 
-  DappUrl: https://cjwp8y6cde7s.usemoralis.com:2053/server
-  DappId: ggR700V3Lzs6pvWvKjA2WJHFjYRSRlgFMr912crD
-  DappName: Your dapp name
+  DappUrl: https://vsf5fftbgtbt.usemoralis.com:2053/server
+  DappId: I9jFVWKhhm8p1eAu3f4AeNPxr74nbxDoyhAIrLbl
+  DappName: Crypto Dice
   DappDescription: Your dapp description
   DappVersion: 0.0.1
   DappIconUrl: https://moralis.io/wp-content/uploads/2022/05/symbol_for_light_bckg.svg

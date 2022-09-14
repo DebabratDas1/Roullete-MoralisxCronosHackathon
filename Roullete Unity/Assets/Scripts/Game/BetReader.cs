@@ -5,51 +5,98 @@ using TMPro;
 
 public class BetReader : MonoBehaviour
 {
-    [Header("Bet Fields")]
-    [SerializeField] private TMP_InputField n1, n2, n3, n4, n5, n6;
+    //[Header("Bet Fields")]
+    [SerializeField] private TMP_InputField n1, n2, n3, n4, n5, n6, n_odd, n_even, n_red, n_black;
 
-    private int bet1, bet2, bet3, bet4, bet5, bet6;
+    private int bet1, bet2, bet3, bet4, bet5, bet6, betEven, betOdd, betRed, betBlack;
     public int BetFor1
     {
         get
         {
-            return int.Parse(n1.text);
+            return ParseInt(n1.text);
         }
     }
     public int BetFor2
     {
         get
         {
-            return int.Parse(n2.text);
+            return ParseInt(n2.text);
         }
     }
     public int BetFor3
     {
         get
         {
-            return int.Parse(n3.text);
+            return ParseInt(n3.text);
         }
     }
     public int BetFor4
     {
         get
         {
-            return int.Parse(n4.text);
+            return ParseInt(n4.text);
         }
     }
     public int BetFor5
     {
         get
         {
-            return int.Parse(n5.text);
+            return ParseInt(n5.text);
         }
     }
     public int BetFor6
     {
         get
         {
-            return int.Parse(n6.text);
+            return ParseInt(n6.text);
         }
+    }
+
+    public int BetForOdd
+    {
+        get
+        {
+            //Debug
+            return ParseInt(n_odd.text);
+        }
+    }
+    public int BetForEven
+    {
+        get
+        {
+            return ParseInt(n_even.text);
+        }
+    }
+    public int BetForRed
+    {
+        get
+        {
+            return ParseInt(n_red.text);
+        }
+    }
+    public int BetForBlack
+    {
+        get
+        {
+            return ParseInt(n_black.text);
+        }
+    }
+
+
+    private int ParseInt(string _s)
+    {
+        bool success = int.TryParse(_s, out int amount);
+        return amount;
+    }
+
+
+    private void Start()
+    {
+        
+    }
+    void Myaction()
+    {
+
     }
 
 }
