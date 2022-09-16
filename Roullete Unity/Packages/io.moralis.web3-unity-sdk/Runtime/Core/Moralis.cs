@@ -52,6 +52,7 @@ using MoralisUnity.SolanaApi.Interfaces;
 using MoralisUnity.Platform.Queries;
 using MoralisUnity.Platform.Utilities;
 using MoralisUnity.Platform.Exceptions;
+using Assets.Scripts;
 
 namespace MoralisUnity
 {
@@ -608,7 +609,7 @@ namespace MoralisUnity
             // Retrieve from address, the address used to authenticate the user.
             MoralisUser user = await Moralis.GetUserAsync();
             string fromAddress = user.authData["moralisEth"]["id"].ToString();
-
+            
             try
             {
 #if UNITY_WEBGL

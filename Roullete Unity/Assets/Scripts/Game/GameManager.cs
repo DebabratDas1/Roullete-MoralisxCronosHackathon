@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
             return (rewardAmt - betAmt);
         }
     }
+
+    //public int 
  
 
 }

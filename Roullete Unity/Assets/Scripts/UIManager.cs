@@ -55,4 +55,19 @@ public class UIManager : MonoBehaviour
     {
         rewardInfoUI.SetActive(false);
     }
+
+
+    [SerializeField] private GameObject gamePlayUI,marketplaceUI;
+
+    public void ShowGamePlayUI()
+    {
+        gamePlayUI.SetActive(true);
+        marketplaceUI.SetActive(false);
+    }
+    public void ShowMarketplaceUI()
+    {
+        gamePlayUI.SetActive(false);
+        marketplaceUI.SetActive(true);
+    }
+
 }
