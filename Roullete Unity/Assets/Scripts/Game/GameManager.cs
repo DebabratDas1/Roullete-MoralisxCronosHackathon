@@ -81,6 +81,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
+    public void ResetGame()
+    {
+        //Set diceoutcome to 0
+        //remove board values
+        //
+    }
+
     //public int 
  
 

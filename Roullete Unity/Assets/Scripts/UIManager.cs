@@ -44,11 +44,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject rewardInfoUI;
     public void ShowRewardInfoUI()
     {
+
         betAmt.text = GameManager.Instance.BetAmt.ToString();
         winAmt.text = GameManager.Instance.RewardAmount.ToString();
         netWinAmt.text = GameManager.Instance.NetWin.ToString();
         diceOutcome.text = GameManager.Instance.DiceOutcome.ToString();
         rewardInfoUI.SetActive(true);
+        WillShowDiceRollUI(false);
     }
 
     public void HideRewardInfoUI()
@@ -68,6 +70,15 @@ public class UIManager : MonoBehaviour
     {
         gamePlayUI.SetActive(false);
         marketplaceUI.SetActive(true);
+    }
+
+
+    [SerializeField] private GameObject diceRollUI;
+
+    public void WillShowDiceRollUI(bool willShow)
+    {
+        HideRewardInfoUI();
+        diceRollUI.SetActive(willShow);
     }
 
 }

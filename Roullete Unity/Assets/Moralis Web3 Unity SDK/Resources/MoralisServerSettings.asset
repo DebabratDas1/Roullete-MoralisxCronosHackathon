@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fef308ab711a6439bb086b5265f83e, type: 3}
   m_Name: MoralisServerSettings
   m_EditorClassIdentifier: 
-  DappUrl: https://vsf5fftbgtbt.usemoralis.com:2053/server
-  DappId: I9jFVWKhhm8p1eAu3f4AeNPxr74nbxDoyhAIrLbl
+  DappUrl: https://fkqwidstomti.usemoralis.com:2053/server
+  DappId: LRD9oDeSfVAjC0Et1CmsK1KOZhlN0b3TFiLt8DrD
   DappName: Crypto Dice
   DappDescription: Your dapp description
   DappVersion: 0.0.1
