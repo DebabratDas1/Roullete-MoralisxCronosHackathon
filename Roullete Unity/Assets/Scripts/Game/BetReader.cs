@@ -99,4 +99,21 @@ public class BetReader : MonoBehaviour
 
     }
 
+
+    public void ClearBet()
+    {
+        n1.text = "";
+        n2.text = "";
+        n3.text = "";
+        n4.text = "";
+        n5.text = "";
+        n6.text = "";
+        n_black.text = "";
+        n_red.text = "";
+        n_odd.text = "";
+        n_even.text = "";
+
+
+    }
+
 }

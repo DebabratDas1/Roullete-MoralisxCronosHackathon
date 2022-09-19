@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,8 +18,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int userChips = 1234;
-    public int AvailableChips
+    private BigInteger userChips;
+    public BigInteger AvailableChips
     {
         get
         {
@@ -26,7 +27,8 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-
+            userChips = value;
+            UIManager.Instance.totalChips.text = userChips.ToString();
         }
     }
 
@@ -69,6 +71,11 @@ public class GameManager : MonoBehaviour
         set
         {
             betAmt = value;
+            if (betAmt > 0)
+                UIManager.Instance.confirmBetBtn.SetActive(true);
+            else
+                UIManager.Instance.confirmBetBtn.SetActive(false);
+
         }
     }
 
@@ -87,7 +94,38 @@ public class GameManager : MonoBehaviour
     {
         //Set diceoutcome to 0
         //remove board values
-        //
+        //Bet amount 0
+        //Win/Reward amount 0
+        // Roll Dice Button Interactive
+    
+    }
+
+
+    public async void OnConfirmBet()
+    {
+        if (!await Web3Manager.Instance.IsConnected())
+        {
+            UIManager.Instance.ShowLogPanel("You are not signed in");
+            return;
+        }
+        if (betAmt < 0)
+        {
+            UIManager.Instance.ShowLogPanel(" Total Bet amount should be atleast 1");
+            return;
+        }
+
+        if (betAmt > userChips)
+        {
+            UIManager.Instance.ShowLogPanel("Bet chips exceeds your available chips number.\n Buy more chips from marketplace");
+            return;
+        }
+
+        //bool a= 
+
+        
+
+        Web3Manager.Instance.ConfirmBet();
+
     }
 
     //public int 

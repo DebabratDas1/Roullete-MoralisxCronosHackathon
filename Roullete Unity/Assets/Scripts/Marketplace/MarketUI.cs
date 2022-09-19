@@ -14,7 +14,7 @@ public class MarketUI : MonoBehaviour
     public TextMeshProUGUI walletAddressText, nativeBalanceText, chipsBalanceText, chipPriceText;
     public TMP_InputField buyBalanceText, sellBalanceText;
 
-    public TextMeshProUGUI buyLogText;
+    public TextMeshProUGUI buyLogText, sellLogText;
 
 
     //private int buyBalance;
@@ -28,5 +28,28 @@ public class MarketUI : MonoBehaviour
             else
                 return 0;
         }
+    }
+
+
+    public void OnBuyValueChanged()
+    {
+        int.TryParse(buyBalanceText.text, out int amt);
+        if (amt > 0)
+        {
+            float cost = Web3Manager.Instance.chipPriceInToken * amt;
+            buyLogText.text = buyBalanceText.text + " Chips costs " + cost.ToString();
+        }
+        
+    }
+
+    public void OnSellValueChanged()
+    {
+        int.TryParse(sellBalanceText.text, out int amt);
+        if (amt > 0)
+        {
+            float cost = Web3Manager.Instance.chipPriceInToken * amt;
+            sellLogText.text = sellBalanceText.text + " Chips = " + cost.ToString();
+        }
+        
     }
 }

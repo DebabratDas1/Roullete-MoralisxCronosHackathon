@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
     {
 
         betAmt.text = GameManager.Instance.BetAmt.ToString();
+        Debug.Log("BetAmt = " + GameManager.Instance.BetAmt);
         winAmt.text = GameManager.Instance.RewardAmount.ToString();
         netWinAmt.text = GameManager.Instance.NetWin.ToString();
         diceOutcome.text = GameManager.Instance.DiceOutcome.ToString();
@@ -55,7 +57,9 @@ public class UIManager : MonoBehaviour
 
     public void HideRewardInfoUI()
     {
+        //RewardCalculator.Instance.betReader.ClearBet();
         rewardInfoUI.SetActive(false);
+        StartCoroutine(Web3Manager.Instance.RefreshMarketWithDelay());
     }
 
 
@@ -70,6 +74,7 @@ public class UIManager : MonoBehaviour
     {
         gamePlayUI.SetActive(false);
         marketplaceUI.SetActive(true);
+        Web3Manager.Instance.RefreshMarketPlace();
     }
 
 
@@ -77,8 +82,38 @@ public class UIManager : MonoBehaviour
 
     public void WillShowDiceRollUI(bool willShow)
     {
-        HideRewardInfoUI();
+        if(willShow)
+            HideRewardInfoUI();
         diceRollUI.SetActive(willShow);
     }
+
+    [SerializeField] private GameObject logPanel;
+    [SerializeField] private TextMeshProUGUI logText;
+
+    public void ShowLogPanel(string _msg)
+    {
+        logText.text = _msg;
+        logPanel.SetActive(true);
+    }
+
+    public void ExitLogPanel()
+    {
+        logPanel.SetActive(false);
+    }
+
+
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
+    public TextMeshProUGUI totalChips;
+    public GameObject confirmBetBtn;
+
+
+
+    
 
 }

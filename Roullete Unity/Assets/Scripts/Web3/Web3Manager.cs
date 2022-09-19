@@ -9,9 +9,11 @@ using System.Numerics;
 using Newtonsoft.Json;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using System;
 
 public class Web3Manager : MonoBehaviour
 {
+   
     public static Web3Manager Instance;
     private void Awake()
     {
@@ -30,13 +32,14 @@ public class Web3Manager : MonoBehaviour
             OnConnectedWalletAsync();
         }
     }*/
-     private string contractAddress = "0xD1Da3eB825224F779aa21D9746e022819d1b2163";
+     private string contractAddress = "0xe57249AE3fE7e5dCc42E9313DA20FFEC0DE81044";
+    // 0xD1Da3eB825224F779aa21D9746e022819d1b2163
     private string contractABI = "[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amt\",\"type\":\"uint256\"}],\"name\":\"bid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Bought\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"buyTokens\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountOfETH\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountOfTokens\",\"type\":\"uint256\"}],\"name\":\"BuyTokens\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amt\",\"type\":\"uint256\"}],\"name\":\"getPrize\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmountToSell\",\"type\":\"uint256\"}],\"name\":\"sellTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"SetChipsPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Sold\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"chipsValue\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getChipsPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ownerAdd\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]";
-    private ChainList chainList = ChainList.mumbai;
+    private ChainList chainList = ChainList.cronos_testnet;
     public void OnConnectedWalletAsync()
     {
         GetSetWalletAddress();
-        FetchMarketPlaceData();
+        RefreshMarketPlace();
     }
 
     private async void GetSetWalletAddress()
@@ -49,23 +52,29 @@ public class Web3Manager : MonoBehaviour
     private async void GetNativeBalanceAsync()
     {
         NativeBalance balance = await Moralis.Web3Api.Account.GetNativeBalance(userWalletAddress.ToLower(), chainList);
-        Debug.Log($"GetNativeBalance Balance: {balance.Balance}");
-        MarketUI.Instance.nativeBalanceText.text = balance.Balance;
+        //Debug.Log($"GetNativeBalance Balance: {balance.Balance}");
+        BigInteger.TryParse(balance.Balance, out BigInteger tcro);
+        BigInteger unit = BigInteger.Pow(10, 18);
+        float nativeBal = (float)tcro / (float )unit;
+        decimal d = Decimal.Parse(nativeBal.ToString(), System.Globalization.NumberStyles.Float);
+        //string formattedBal = string.Format("{ 0:00.00}", nativeBal.ToString());
+        MarketUI.Instance.nativeBalanceText.text = d.ToString();
+        //String.Format("{0:0.00000}", d);
     }
 
-    public void FetchMarketPlaceData()
+    /*public void FetchMarketPlaceData()
     {
         GetNativeBalanceAsync();
-    }
+    }*/
 
 
     // Get chips value + Y
     // Buy chips(Chips amount) need to convert to native balance value + Y
     // Sell Buy(Chips amount) +
-    // Confirm Bid(chips amount) +
-    // Get Reward(chips amount) +
+    // Confirm Bid(chips amount) + Y
+    // Get Reward(chips amount) + Y
     // Get Native Balance + Y
-    // Get Token Balance +
+    // Get Token Balance + Y
 
 
     private async UniTask<string> CallContractFunction(object[] parameters, string functionName, HexBigInteger value)
@@ -111,7 +120,7 @@ public class Web3Manager : MonoBehaviour
             Debug.Log("Unsuccessful transaction !");
     }*/
 
-
+    public float chipPriceInToken = 0;
     private BigInteger chipPrice;
     public BigInteger ChipPrice
     {
@@ -122,18 +131,16 @@ public class Web3Manager : MonoBehaviour
         set
         {
             chipPrice = value;
-            int chipPriceInWei = (int)chipPrice;
-            float chipPriceInToken = (float)chipPrice * Mathf.Pow(10, -18);
-            MarketUI.Instance.chipPriceText.text = "1 CHP price = " + chipPriceInWei.ToString() + " wei = " + chipPriceInToken.ToString() + " TCRO";
+            //int chipPriceInWei = chipPrice;
+            chipPriceInToken = (float)chipPrice * Mathf.Pow(10, -18);
+            Debug.Log("chipPriceInToken " + chipPriceInToken);
+            MarketUI.Instance.chipPriceText.text = "1 chp = " + chipPriceInToken.ToString() + " TCRO";// + chipPriceInToken.ToString() + " TCRO";
         }
     }
     public async void GetChipsPrice()
     {
         object[] inputParams = new object[0];
-        /*inputParams[0] = new
-        {
-
-        };*/
+        
         object[] outputParams = new object[1];
         outputParams[0] = new
         {
@@ -165,8 +172,9 @@ public class Web3Manager : MonoBehaviour
         string resp = await moralisClient.Web3Api.Native.RunContractFunction<string>(
             contractAddress, "getChipsPrice", rcd, chainList);
         Debug.Log(resp);
-        int.TryParse(resp, out int _chipPrice);
+        BigInteger.TryParse(resp, out BigInteger _chipPrice);
         ChipPrice = _chipPrice;
+        Debug.Log(ChipPrice);
 
     }
 
@@ -185,11 +193,7 @@ public class Web3Manager : MonoBehaviour
 
     private async UniTask<string> CallBuyChipsFunction()
     {
-        //USER ADDRESS CHECKING
-        MoralisUser user = await Moralis.GetUserAsync();
-        Debug.Log(user);
-        string fromAddress = user.authData["moralisEth"]["id"].ToString();
-        Debug.Log(fromAddress + "  FromAddress");
+        
 
 
         // Contract Function Parameters
@@ -231,13 +235,17 @@ public class Web3Manager : MonoBehaviour
         Debug.Log("resp" + resp);
         //RunContractFunction()
         if (resp == null)
-            Debug.Log("Transaction Unsuccessful");
+            UIManager.Instance.ShowLogPanel("Transaction Unsuccessful");
+        
+
         return resp;
     }
 
     public async void BuyChip()
     {
         await CallBuyChipsFunction();
+        StartCoroutine(RefreshMarketWithDelay());
+        
     }
 
 
@@ -281,15 +289,23 @@ public class Web3Manager : MonoBehaviour
             contractAddress, functionName, rcd, chainList);
         Debug.Log(resp);
         BigInteger.TryParse(resp, out BigInteger tokenBal);
+        GameManager.Instance.AvailableChips = tokenBal;
+
         //int.TryParse(resp, out int tokenBalance);
         MarketUI.Instance.chipsBalanceText.text = tokenBal.ToString();
 
     }
 
-    /*public async void CallGetRewards()
+    public async void CallGetRewards()
     {
-        await GetReward(123);
-    }*/
+        string resp = await GetReward(GameManager.Instance.RewardAmount);
+        if (resp != null)
+        {
+
+            StartCoroutine(RefreshMarketWithDelay());
+            UIManager.Instance.ShowRewardInfoUI();
+        }
+    }
 
 
     public async UniTask<string> GetReward(int _prizeAmt)
@@ -337,7 +353,23 @@ public class Web3Manager : MonoBehaviour
     }
 
 
-    public async UniTask<string> Bet(int _prizeAmt)
+    public async void ConfirmBet()
+    {
+        
+        string resp = await Bet(GameManager.Instance.BetAmt);
+        if (resp != null)
+        {
+
+            StartCoroutine(RefreshMarketWithDelay());
+            UIManager.Instance.WillShowDiceRollUI(true);
+        }
+        else
+        {
+           UIManager.Instance.ShowLogPanel("Transaction Unsuccessful");
+        }
+    }
+
+    private async UniTask<string> Bet(int _betAmt)
     {
 
         //USER ADDRESS CHECKING
@@ -353,7 +385,7 @@ public class Web3Manager : MonoBehaviour
 
         // Calculate Prize Amount
 
-        BigInteger prizeAmt = new BigInteger(_prizeAmt);
+        BigInteger prizeAmt = new BigInteger(_betAmt);
 
         // Contract Function Parameters
         object[] parameters = {
@@ -382,4 +414,102 @@ public class Web3Manager : MonoBehaviour
     }
 
 
+    public IEnumerator RefreshMarketWithDelay()
+    {
+        yield return new WaitForSeconds(6f);
+        RefreshMarketPlace();
+    }
+
+
+
+    public async UniTask<bool> IsConnected()
+    {
+        //string fromAddress = null;
+        //USER ADDRESS CHECKING
+        MoralisUser user = await Moralis.GetUserAsync();
+        Debug.Log(user);
+        //fromAddress = user.authData["moralisEth"]["id"].ToString();
+        if (user != null)
+            return true;
+        else
+            return false;
+    }
+
+
+
+
+    private async UniTask<string> CallSellChipsFunction()
+    {
+       /* {
+            "inputs": [
+    
+            {
+                "internalType": "uint256",
+				"name": "tokenAmountToSell",
+				"type": "uint256"
+    
+            }
+		],
+		"name": "sellTokens",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+
+    },*/
+
+
+        
+
+        // Calculate value for required chips
+
+        BigInteger.TryParse(MarketUI.Instance.sellBalanceText.text, out BigInteger requiredChip);
+        Debug.Log(requiredChip);
+        if (requiredChip <= 0)
+        {
+            MarketUI.Instance.sellLogText.text = "Error : You need to sell at least 1 Chip";
+            return null;
+        }
+
+        Debug.Log("required chip = " + requiredChip);
+        // Contract Function Parameters
+        object[] parameters = {
+            requiredChip
+        };
+
+        //BigInteger val = BigInteger.Parse(amt.ToString());
+        HexBigInteger value = new HexBigInteger(0);
+        HexBigInteger gas = new HexBigInteger(3000000);
+        HexBigInteger gasPrice = new HexBigInteger(0);
+
+
+
+        //Debug.Log("value = " + value);
+
+        string resp = await Moralis.ExecuteContractFunction(contractAddress, contractABI,
+            "sellTokens", parameters,
+            value, gas, gasPrice);
+        //Debug.Log(contractABI.Length);
+        Debug.Log("resp" + resp);
+        //RunContractFunction()
+        if (resp == null)
+            UIManager.Instance.ShowLogPanel("Transaction Unsuccessful");
+
+
+        return resp;
+    }
+
+    public async void SellChip()
+    {
+        await CallSellChipsFunction();
+        StartCoroutine(RefreshMarketWithDelay());
+
+    }
+
+
 }
+
+
+
+
+//[{\"inputs\":[],\"name\":\"AddBalanceToContract\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amt\",\"type\":\"uint256\"}],\"name\":\"bid\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Bought\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"buyTokens\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountOfETH\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountOfTokens\",\"type\":\"uint256\"}],\"name\":\"BuyTokens\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amt\",\"type\":\"uint256\"}],\"name\":\"getPrize\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmountToSell\",\"type\":\"uint256\"}],\"name\":\"sellTokens\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"SetChipsPrice\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Sold\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"chipsValue\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getChipsPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ownerAdd\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]
+//0x6b82a6C67F63aec3Df91F71cC974d33fDB111764

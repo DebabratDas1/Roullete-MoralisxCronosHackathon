@@ -6,10 +6,28 @@ public class RewardCalculator : MonoBehaviour
     public BetReader betReader;
 
 
+    public static RewardCalculator Instance;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+    }
+
+
     public void Reward()
     {
-        CalculateReward1(GameManager.Instance.DiceOutcome);
-        UIManager.Instance.ShowRewardInfoUI();
+        int reward = CalculateReward1(GameManager.Instance.DiceOutcome);
+
+        if (reward > 0)
+        {
+            Web3Manager.Instance.CallGetRewards();
+        }
+        else
+        {
+            UIManager.Instance.ShowRewardInfoUI();
+        }
     }
 
     public int CalculateReward(int _diceOutcome)
@@ -183,6 +201,7 @@ public class RewardCalculator : MonoBehaviour
             GameManager.Instance.BetAmt = (betReader.BetFor1 + betReader.BetFor2 + betReader.BetFor3 +
                 betReader.BetFor4 + betReader.BetFor5 + betReader.BetFor6 +
                 betReader.BetForBlack + betReader.BetForEven + betReader.BetForOdd + betReader.BetForRed);
+            Debug.Log("Bet Amount = " + GameManager.Instance.BetAmt);
             return GameManager.Instance.BetAmt;
         }
     }
@@ -201,4 +220,6 @@ public class RewardCalculator : MonoBehaviour
         totalBetAmount.text = TotalBetAmount.ToString();
 
     }
+
+    
 }

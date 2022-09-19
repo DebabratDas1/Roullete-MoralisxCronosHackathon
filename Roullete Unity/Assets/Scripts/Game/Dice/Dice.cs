@@ -10,6 +10,8 @@ public class Dice : MonoBehaviour {
     // Reference to Image to change sprites
     [SerializeField] private Image img;
 
+    
+
 	
 
     public void OnRollDice()
@@ -51,8 +53,9 @@ public class Dice : MonoBehaviour {
 
         GameManager.Instance.DiceOutcome = finalSide;
         yield return new WaitForSeconds(2f);
+
+        RewardCalculator.Instance.Reward();
         
-        // Show Reward Panel
         // Get Prize (web3)
 
 
