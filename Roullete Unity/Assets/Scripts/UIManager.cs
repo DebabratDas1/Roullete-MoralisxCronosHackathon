@@ -79,12 +79,15 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private GameObject diceRollUI;
+    public GameObject rollButton;
 
     public void WillShowDiceRollUI(bool willShow)
     {
         if(willShow)
             HideRewardInfoUI();
         diceRollUI.SetActive(willShow);
+        rollButton.SetActive(true);
+        waitForRewardAfterRollText.SetActive(false);
     }
 
     [SerializeField] private GameObject logPanel;
@@ -111,7 +114,7 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI totalChips;
     public GameObject confirmBetBtn;
-
+    public GameObject waitForRewardAfterRollText;
 
 
     

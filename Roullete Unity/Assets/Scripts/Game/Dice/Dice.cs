@@ -16,6 +16,7 @@ public class Dice : MonoBehaviour {
 
     public void OnRollDice()
     {
+        UIManager.Instance.rollButton.SetActive(false);
         StartCoroutine("RollTheDice");
     }
 

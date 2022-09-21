@@ -22,6 +22,7 @@ public class RewardCalculator : MonoBehaviour
 
         if (reward > 0)
         {
+            UIManager.Instance.waitForRewardAfterRollText.SetActive(true);
             Web3Manager.Instance.CallGetRewards();
         }
         else

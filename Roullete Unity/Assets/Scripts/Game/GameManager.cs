@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     public async void OnConfirmBet()
     {
+        UIManager.Instance.confirmBetBtn.SetActive(false);
         if (!await Web3Manager.Instance.IsConnected())
         {
             UIManager.Instance.ShowLogPanel("You are not signed in");

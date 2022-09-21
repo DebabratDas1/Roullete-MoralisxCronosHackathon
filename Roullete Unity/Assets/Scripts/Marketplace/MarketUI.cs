@@ -52,4 +52,17 @@ public class MarketUI : MonoBehaviour
         }
         
     }
+
+
+    public void ClearMarketPlace()
+    {
+        walletAddressText.text = "";
+        nativeBalanceText.text = "";
+        chipsBalanceText.text = "";
+        buyBalanceText.text = "";
+        sellBalanceText.text = "";
+        chipPriceText.text = "";
+        buyLogText.text = "";
+        sellLogText.text = "";
+    }
 }
