@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
     {
         logText.text = _msg;
         logPanel.SetActive(true);
+        RewardCalculator.Instance.betReader.ClearBet();
     }
 
     public void ExitLogPanel()
